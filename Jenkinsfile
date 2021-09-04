@@ -11,12 +11,17 @@ node {
 
   stage 'Push | Apply'
   try {
-      timeout(time:10,unit: 'SECONDS'){
+      timeout(time:100,unit: 'SECONDS'){
 
     response = input message: 'User input required', ok: 'Deploy!' 
+    echo '${response}'
       }
   }
   catch (err){
-      response = 'stop'
-  }       
+      response = 'Abbort'
+      return false
+  } 
+
+  stage 'Push | Push to regestry'
+    echo 'push '      
 }
