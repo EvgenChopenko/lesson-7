@@ -1,9 +1,21 @@
 node {
   stage 'Build image' 
   git 'https://github.com/EvgenChopenko/lesson-7.git' 
-  def myEnv = docker.build 'my-image'
-  stage 'Test image'
-    myEnv.withRun {c ->
+  def docker_image = docker.build 'my-image'
+
+  stage 'Test | workdir '
+    docker_image.withRun {c ->
     sh 'ls'
     }
+
+  stage 'Push | Apply'
+  try {
+      timeout(time:10,unit: 'SECONDS'){
+
+    response = input message: 'User input required', ok: 'Deploy!' 
+      }
+  }
+  catch {
+      response = 'stop'
+  }       
 }
