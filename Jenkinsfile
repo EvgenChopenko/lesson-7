@@ -14,7 +14,6 @@ node {
       timeout(time:100,unit: 'SECONDS'){
 
     response = input message: 'User input required', ok: 'Deploy!' 
-
     return true
 
       }
@@ -24,8 +23,7 @@ node {
   } 
 
   stage 'Push | Push to regestry'
-  if (response){
 
     echo 'push '      
-  }
+
 }
