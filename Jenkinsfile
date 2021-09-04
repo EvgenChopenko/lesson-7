@@ -1,5 +1,5 @@
 node {
-  def   
+  def response 
   stage 'Build image' 
   git 'https://github.com/EvgenChopenko/lesson-7.git' 
   def docker_image = docker.build 'my-image'
