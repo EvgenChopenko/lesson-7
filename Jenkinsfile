@@ -14,7 +14,8 @@ node {
       timeout(time:100,unit: 'SECONDS'){
 
     response = input message: 'User input required', ok: 'Deploy!' 
-    echo '${response}'
+    return true
+
       }
   }
   catch (err){
